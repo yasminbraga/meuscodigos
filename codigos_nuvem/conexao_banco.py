@@ -29,6 +29,7 @@ def get_banco_local():
 		"model_sensor":dados_salvos["model_sensor"],
 		"value":dados_salvos["value"] }
 	#retorna os dados que serao enviados pela internet assim que a conexao for reestabelecida
+	#print(doc)
 	return doc
 
 def num_de_documentos():

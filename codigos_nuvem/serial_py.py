@@ -37,14 +37,16 @@ while True:
 		"type_sensor": "corrente",
 		"model_sensor": "SCT-013",
 		"value": value }
+    
     if checar_conexao() == True:
         while (num_de_documentos() > 0):
             #pega o dado que foi salvo no banco quando nao tinha conexao e envia
-            conexao_mqtt(local,port_mqtt,timeout,topico,json.dumps(get_banco_local()))
+            conexao_mqtt(local,port_mqtt,timeout,topico,get_banco_local())
             #print(type(get_banco_local()))
             #exclui os dados
             excluir_dados_banco(get_banco_local())
             # envia o dado quando tem internet
+        #print(doc)    
         conexao_mqtt(local, port_mqtt,timeout,topico,doc)
     else:
         save_banco_local(doc)
