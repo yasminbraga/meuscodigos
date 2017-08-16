@@ -16,9 +16,9 @@ def check_host():
     try:
       b=a.connect_ex((host, 80))
       if b==0: #ok, conectado
-         return True
+      return True
     except:
-          pass
+        pass
     a.close()
   return False
 def bin2dec(string_num):

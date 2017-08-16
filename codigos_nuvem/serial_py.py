@@ -9,7 +9,7 @@ import random
 local = "10.1.19.35"
 port_mqtt = 1883
 timeout = 60
-topico = "Tapajos-IoT"
+topico = "Teste"
 data = str(datetime.date.today())
 hora = str(datetime.datetime.now().time()).split(".")
 hora = str(hora[0])
