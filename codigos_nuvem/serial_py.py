@@ -9,7 +9,7 @@ import random
 local = "10.1.19.35"
 port_mqtt = 1883
 timeout = 60
-topico = "Teste"
+topico = "Tapajos-IoT"
 data = str(datetime.date.today())
 hora = str(datetime.datetime.now().time()).split(".")
 hora = str(hora[0])
@@ -18,12 +18,12 @@ def binario_para_decimal(leitura):
     return str(float(leitura))
 
 #comunicacaoSerial = serial.Serial('/dev/ttyACM0', 9600)
-
+i = 1
 while True:
 	#value_bin = comunicacaoSerial.readline()
 	#value = binario_para_decimal(value_bin)
 	value =float("%.2f"%random.uniform(0.3,0.6))
-	print("corrente: ",value," A")
+	print("%d - corrente: "%i,value," A")
 
 	doc = {
    		"user": "yasmin",
@@ -36,13 +36,14 @@ while True:
 		"value": value }
 	
 	if checar_conexao() == True:
-		#while (num_de_documentos() > 0):
-			# pega o dado que foi salvo no banco quando nao tinha conexao e envia
-			#conexao_mqtt(local,port_mqtt,timeout,topico,get_banco_local())
+		while (num_de_documentos() > 0):
+			#pega o dado que foi salvo no banco quando nao tinha conexao e envia
+			conexao_mqtt(local,port_mqtt,timeout,topico,str(get_banco_local()))
 			#exclui os dados
-			#excluir_dados_banco(get_banco_local())
+			excluir_dados_banco((get_banco_local()))
 		# envia o dado quando tem internet
 		conexao_mqtt(local, port_mqtt,timeout,topico,doc)
 	else:
 		save_banco_local(doc)
 	time.sleep(2)
+	i +=1

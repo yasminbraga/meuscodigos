@@ -11,7 +11,7 @@ def save_banco_local(doc):
 	#faz conexao com o banco de dados
 	try:
 		#salva os dados no banco
-		dados.save(repr(doc))
+		dados.insert_one(doc)
 	#se der erro na conexao com o banco vai printar qual o erro	
 	except Exception as error:
 		print(error)
