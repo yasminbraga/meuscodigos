@@ -1,11 +1,16 @@
 from pymongo import MongoClient
 
-def conexao_local_banco(doc):
+def save_banco_local(doc):
 	try:
-		cliente = MongoClient('localhost', 27017)
-		banco = cliente.banco_database
+		conexao = MongoClient('localhost', 27017)
+		banco = conexao.banco_local_raspberry
 		dados = banco.dados
 		dados.save(doc)
 	except Exception as error:
 		print(error)
-	
+
+def get_banco_local():
+	dados_salvos = dados.find()
+	return dados_salvos()
+
+
