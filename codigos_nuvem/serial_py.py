@@ -3,7 +3,8 @@ from checar_conexao import *
 from conexao_banco import *
 from conexao_mqtt import *
 import datetime
-import time 
+import time
+import random
 
 local = "10.1.19.35"
 port_mqtt = 1883
@@ -21,7 +22,7 @@ def binario_para_decimal(leitura):
 while True:
 	#value_bin = comunicacaoSerial.readline()
 	#value = binario_para_decimal(value_bin)
-	value = 0.49
+	value =float("%.2f"%random.uniform(0.3,0.6))
 	print("corrente: ",value," A")
 
 	doc = {
@@ -35,11 +36,13 @@ while True:
 		"value": value }
 	
 	if checar_conexao() == True:
-		# pega o dado que foi salvo e envia
-		function
+		#while (num_de_documentos() > 0):
+			# pega o dado que foi salvo no banco quando nao tinha conexao e envia
+			#conexao_mqtt(local,port_mqtt,timeout,topico,get_banco_local())
+			#exclui os dados
+			#excluir_dados_banco(get_banco_local())
 		# envia o dado quando tem internet
 		conexao_mqtt(local, port_mqtt,timeout,topico,doc)
-		
 	else:
 		save_banco_local(doc)
 	time.sleep(2)
