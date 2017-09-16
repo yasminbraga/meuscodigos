@@ -1,7 +1,7 @@
 import serial
 
 def binario_para_decimal(leitura):
-    return str(int(leitura, 2))
+    return str(float(leitura))
 
 comunicacaoSerial = serial.Serial('/dev/ttyACM0', 9600)
 value_bin = comunicacaoSerial.readline()
