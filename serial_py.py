@@ -9,4 +9,4 @@ value = binario_para_decimal(value_bin)
 
 while 1:
 	print("corrente: ",value," A")
-	print ("tipo: ",type(value))
+	#print ("tipo: ",type(value))
