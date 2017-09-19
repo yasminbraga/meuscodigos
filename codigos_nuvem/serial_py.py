@@ -9,13 +9,16 @@ local = "10.1.19.110"
 port_mqtt = 1883
 timeout = 60
 topico = "Tapajos-IoT"
+data = str(datetime.date.today())
+hora = str(datetime.datetime.now().time()).split(".")
+hora = str(hora[0])
 
 def binario_para_decimal(leitura):
     return str(float(leitura))
 
 comunicacaoSerial = serial.Serial('/dev/ttyACM0', 9600)
 
-while 1:
+while True:
 	value_bin = comunicacaoSerial.readline()
 	value = binario_para_decimal(value_bin)
 	print("corrente: ",value," A")
@@ -24,8 +27,8 @@ while 1:
    		user: "yasmin",
 		local: "laboratório",
 		device: "raspberry pi",
-		hour: "15:31:22",
-		day: "10-07-2017"
+		hour: hora,
+		day: data,
 		type_sensor: "corrente",
 		model_sensor: "SCT-013",
 		value: value }
