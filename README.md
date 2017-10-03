@@ -12,7 +12,7 @@ O Hardware utilizado constitui-se de tecnologias Open Source e dos componentes e
 * 1 resistor de 33Ω (para o resistor de carga)
 * 1 capacitor de 10µF
 
-![sct_arduino](meuscodigos/sct_arduino.png)
+![sct_arduino](meuscodigos/docs/sct_arduino.png)
 
 
 
