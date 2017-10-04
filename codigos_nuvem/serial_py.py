@@ -13,7 +13,7 @@ port_mqtt = 1883
 timeout = 60
 topico = "Tapajos-IoT"
 
-
+#funcao para transformar os dados lidos de decimal para string
 def binario_para_decimal(leitura):
     return str(float(leitura))
 
@@ -42,12 +42,13 @@ while True:
         print("Conexao com a internet estabelecida")
         while (num_de_documentos() > 0):
             #pega o dado que foi salvo no banco quando nao tinha conexao e envia
+            print("Enviando para o brocker os dados armazenados no banco")
             conexao_mqtt(local,port_mqtt,timeout,topico,get_banco_local())
-            #print(type(get_banco_local()))
             #exclui os dados
             excluir_dados_banco(get_banco_local())
             # envia o dado quando tem internet
         #print(doc)
+        print("Dado enviado para o brocker")
         conexao_mqtt(local, port_mqtt,timeout,topico,doc)
     else:
         print("Sem conexao com a internet! Salvando dados no banco local")
