@@ -8,7 +8,7 @@ import random
 import json
 
 #define o local de envio, a porta, o tempo e o topico
-local = "10.1.19.201"
+local = "localhost"
 port_mqtt = 1883
 timeout = 60
 topico = "Tapajos-IoT"
@@ -27,7 +27,7 @@ while True:
     value_bin = comunicacaoSerial.readline()
     value = binario_para_decimal(value_bin)
     #value =float("%.2f"%random.uniform(0.3,0.6))
-    print("%d - corrente: "%i,value," A")
+    print("%d - corrente: %s A "%(i,value))
     doc = {
    		"user": "yasmin",
 		"local": "labic",
@@ -39,6 +39,7 @@ while True:
 		"value": value }
 
     if checar_conexao() == True:
+        print("Conexao com a internet estabelecida")
         while (num_de_documentos() > 0):
             #pega o dado que foi salvo no banco quando nao tinha conexao e envia
             conexao_mqtt(local,port_mqtt,timeout,topico,get_banco_local())
@@ -49,6 +50,7 @@ while True:
         #print(doc)
         conexao_mqtt(local, port_mqtt,timeout,topico,doc)
     else:
+        print("Sem conexao com a internet! Salvando dados no banco local")
         save_banco_local(doc)
     time.sleep(2)
     i +=1
