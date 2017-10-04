@@ -30,7 +30,7 @@ def get_banco_local():
 		"value":dados_salvos["value"] }
 	#retorna os dados que serao enviados pela internet assim que a conexao for reestabelecida
 	#print(doc)
-	return doc
+	return dados_salvos
 
 def num_de_documentos():
 	num_documentos = dados.count()
