@@ -1,7 +1,7 @@
-# Envio de dados do sensor de corrente para a nuvem
+# Envio de dados do Sensor de Corrente para a Nuvem
 
 ## Introdução
-O procedimento a seguir refere-se ao projeto para monitoramento de energia com plataformas de desenvolvimento abertas usando também o conceito de IoT (Internet of Things) ao fazer uso de Arduino, Raspberry Pi e envio de dados para a nuvem.
+O procedimento a seguir refere-se a etapas do projeto que objetiva monitorar energia com plataformas de desenvolvimento abertas e utilizar também o conceito de IoT (Internet of Things) ao usar Arduino, Raspberry Pi e enviar os dados para a nuvem.
 
 ## Hardware
 O Hardware utilizado constitui-se de tecnologias Open Source e dos componentes eletrônicos listados a seguir:
@@ -16,6 +16,7 @@ O Hardware utilizado constitui-se de tecnologias Open Source e dos componentes e
 E seguem a montagem ilustrada abaixo:
 
 ![sct_arduino](docs/sct_arduino.png)
+Fonte: Open Energy Monitor. (https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/how-to-build-an-arduino-energy-monitor-measuring-current-only)
 
 ## Integração Arduino e Raspberry
 A integração entre Arduino e Raspberry Pi é feita com comunicação serial. Isso é feito ao conectar o cabo USB do Arduino a uma das portas do Raspberry Pi (no caso foi usado a primeira).
