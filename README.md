@@ -1,7 +1,7 @@
 # Envio de dados do sensor de corrente para a nuvem
 
 ## Introdução
-
+O procedimento a seguir refere-se ao projeto para monitoramento de energia com plataformas de desenvolvimento abertas usando também o conceito de IoT (Internet of Things) ao fazer uso de Arduino, Raspberry Pi e envio de dados para a nuvem.
 
 ## Hardware
 O Hardware utilizado constitui-se de tecnologias Open Source e dos componentes eletrônicos listados a seguir:
@@ -28,7 +28,7 @@ Depois conecte o cabo e novamente digite o codigo. Será acrescentado uma porta 
 Istale a biblioteca Pyserial
 
 ## Software Arduino
-O software do Arduino é basicamente usar a biblioteca Emonlib disponibilizada aqui ["Download_Emonlib"](https://github.com/openenergymonitor/EmonLib) e uma linha de codigo que contenha algumas caracteristicas do sensor(como a porta que está conectado ao Arduino e parâmetros de calibração) e os comandos para printar os dados na porta serial.
+O software do Arduino é basicamente usar a biblioteca Emonlib disponibilizada aqui ["Download_Emonlib"](https://github.com/openenergymonitor/EmonLib) e uma linha de código que contenha algumas características do sensor (como a porta em que está conectado ao Arduino e parâmetros de calibração) e os comandos para printar os dados na porta serial.
 
 ## Software Raspberry
 O software no Raspberry é escrito em linguagem Python e utiliza protocolo MQTT para envio de mensagens e MongoDb para o banco de dados local. Então é necessário o download das bibliotecas desses sistemas.
