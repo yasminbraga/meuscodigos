@@ -26,7 +26,7 @@ Antes da conexão, no prompt de comando do Raspberry digite o seguinte:
 
 Depois conecte o cabo e novamente digite o codigo. Será acrescentado uma porta na lista que é a porta em que o Arduino esta conectado (normalmente "/dev/ttyACM0").
 
-Istale a biblioteca Pyserial
+Instale a biblioteca Pyserial que fará a comunicação entre o Arduino e o Raspberry Pi.
 
 ## Software Arduino
 O software do Arduino é basicamente usar a biblioteca Emonlib disponibilizada aqui ["Download_Emonlib"](https://github.com/openenergymonitor/EmonLib) e uma linha de código que contenha algumas características do sensor (como a porta em que está conectado ao Arduino e parâmetros de calibração) e os comandos para printar os dados na porta serial.
@@ -42,12 +42,12 @@ O software no Raspberry é escrito em linguagem Python e utiliza protocolo MQTT 
 Os dados são enviados para o brocker MQTT em formato json islustrado abaixo:
 ```
 doc = {
-    "user": "yasmin",
-  "local": "labic",
+  "user": "nome",
+  "local": "local",
   "device": "raspberry pi",
-  "hour": hora,
-  "day": data,
+  "hour": "hora",
+  "day": "data",
   "type_sensor": "corrente",
-  "model_sensor": "SCT-013",
+  "model_sensor": "Sct-013",
   "value": value }
   ```
