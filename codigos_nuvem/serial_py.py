@@ -40,16 +40,16 @@ while True:
 
     if checar_conexao() == True:
         print("Conexao com a internet estabelecida")
+        
         while (num_de_documentos() > 0):
             #pega o dado que foi salvo no banco quando nao tinha conexao e envia
             print("Enviando para o brocker os dados armazenados no banco")
             conexao_mqtt(local,port_mqtt,timeout,topico,get_banco_local())
-            #exclui os dados
+            #exclui os dados do banco
             excluir_dados_banco(get_banco_local())
-            # envia o dado quando tem internet
-        #print(doc)
-        print("Dado enviado para o brocker")
+        # envia o dado quando tem internet
         conexao_mqtt(local, port_mqtt,timeout,topico,doc)
+        print("Dado enviado para o brocker")
     else:
         print("Sem conexao com a internet! Salvando dados no banco local")
         save_banco_local(doc)
