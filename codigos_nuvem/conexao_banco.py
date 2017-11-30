@@ -8,19 +8,20 @@ banco = conexao.banco_local_raspberry
 dados = banco.dados
 
 def save_banco_local(doc):
-	#faz conexao com o banco de dados
-	try:
-		#salva os dados no banco
-		dados.insert_one(doc)
-	#se der erro na conexao com o banco vai printar qual o erro	
-	except Exception as error:
-		print(error)
+    #faz conexao com o banco de dados
+    try:
+        #salva os dados no banco
+        dados.insert_one(doc)
+        #se der erro na conexao com o banco vai printar qual o erro
+    except Exception as error:
+        print(error)
 
 def get_banco_local():
 	#dados_salvos guarda os dados que serao encontrados dentro da colecao "dados"
 	dados_salvos = dados.find_one()
 	doc = {
    		"user": dados_salvos["user"],
+   		"name_sensor": dados_salvos["name_sensor"],
 		"local": dados_salvos["local"],
 		"device": dados_salvos["device"],
 		"hour": dados_salvos["hour"],
