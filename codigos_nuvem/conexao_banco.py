@@ -8,19 +8,30 @@ banco = conexao.banco_local_raspberry
 dados = banco.dados
 
 def save_banco_local(doc):
-	#faz conexao com o banco de dados
-	try:
-		#salva os dados no banco
-		dados.insert_one(doc)
-	#se der erro na conexao com o banco vai printar qual o erro	
-	except Exception as error:
-		print(error)
+    #faz conexao com o banco de dados
+    try:
+        #salva os dados no banco
+        dados.insert_one(doc)
+        #se der erro na conexao com o banco vai printar qual o erro
+    except Exception as error:
+        print(error)
 
 def get_banco_local():
 	#dados_salvos guarda os dados que serao encontrados dentro da colecao "dados"
 	dados_salvos = dados.find_one()
+	doc = {
+   		"user": dados_salvos["user"],
+   		"name_sensor": dados_salvos["name_sensor"],
+		"local": dados_salvos["local"],
+		"device": dados_salvos["device"],
+		"hour": dados_salvos["hour"],
+		"day": dados_salvos["day"],
+		"type_sensor": dados_salvos["type_sensor"],
+		"model_sensor":dados_salvos["model_sensor"],
+		"value":dados_salvos["value"] }
 	#retorna os dados que serao enviados pela internet assim que a conexao for reestabelecida
-	return dados_salvos
+	#print(doc)
+	return doc
 
 def num_de_documentos():
 	num_documentos = dados.count()
