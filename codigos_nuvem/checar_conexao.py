@@ -1,6 +1,7 @@
 import socket
 
 confiaveis = ['www.google.com', 'www.yahoo.com', 'www.bb.com.br']
+servidor = '10.1.19.207'
 
 def checar_conexao():
 	global confiaveis
@@ -15,6 +16,4 @@ def checar_conexao():
 			pass
 		connection.close()
 	return False
-
-
 
