@@ -1,0 +1,32 @@
+#include "EmonLib.h"
+#include <SPI.h>
+
+EnergyMonitor emon0;
+EnergyMonitor emon1;
+//Tensao da rede eletrica
+int rede = 127;
+
+//Pino do sensor SCT
+int pino_sct0 = A0;
+int pino_sct1 = A1;
+void setup()
+{
+  Serial.begin(9600);
+  //Pino, calibracao - Cur Const= Ratio/BurdenR. 2000/33 = 60
+  emon0.current(pino_sct0, 60.3);
+  emon1.current(pino_sct1, 60.3);
+}
+
+void loop()
+{
+  //Calcula a corrente
+  double Irms0 = emon0.calcIrms(1480);
+  double Irms1 = emon1.calcIrms(1480);
+
+  //Mostra o valor da corrente no serial monitor e display
+  Serial.print("corrente,sct-013,corrente-00, %f", Irms0);
+  //Serial.println(Irms0);
+  Serial.print("corrente,sct-013,corrente-01, %f", Irms1);
+  //Serial.println(Irms1);
+  delay(2000);
+}
