@@ -14,48 +14,37 @@ timeout = 60
 topico = 'Tapajos-IoT'
 
 
-#funcao para transformar os dados lidos de decimal para string
-def binario_para_decimal(leitura):
-    return str(float(leitura))
 
-#comunicacaoSerial = serial.Serial('/dev/ttyACM0', 9600)
-'''
-i = 1
-while True:
-	value_bin = comunicacaoSerial.readline()
-	valor_lido = str(value_bin,'iso-8859-1')
-	try:
-		name_sensor,model_sensor,value = valor_lido.split(',')
-		print(str(i) + ' ' + name_sensor + ' ' + model_sensor + ' ' + value)
-	except Exception as error:
-		print(error)
-	i += 1
-'''
+comunicacaoSerial = serial.Serial('/dev/ttyACM1', 9600)
 
 i = 1
 while True:
 	data = str(datetime.date.today())
 	hora = str(datetime.datetime.now().time()).split('.')
 	hora = str(hora[0])
-	#value_bin = comunicacaoSerial.readline()
-	#valor_lido = str(value_bin,'iso-8859-1')
+	value_bin = comunicacaoSerial.readline()
+	valor_lido = str(value_bin,'iso-8859-1')
+	valor_lido = valor_lido.strip()
+	
+
 	try:
-		#name_sensor,model_sensor,value = valor_lido.split(',')
+		type_sensor,model_sensor,name_sensor,value = valor_lido.split(',')
 		#value = value.strip()
-		model_sensor = 'sct-13'
-		name_sensor = 'corrente01'
-		value = round(random.uniform(0.3,0.6),2)
+		#model_sensor = 'sct-13'
+		#name_sensor = 'corrente01'
+		#value = round(random.uniform(0.3,0.6),2)
 		doc = {
    		"user": "yasminbraga",
 		"local": "labic",
 		"device": "raspberry pi",
 		"hour": hora,
 		"day": data,
-		"type_sensor": "corrente",
+		"type_sensor": type_sensor,
 		"model_sensor": model_sensor,
 		"name_sensor": name_sensor,
 		"value": value }
-		print('%d - corrente: %s A '%(i,value))
+		print('%d - '%i, name_sensor,' : %s A '%value)
+		#print(doc)
 		if checar_conexao() == True and checar_servidor(local,port_mqtt,timeout) == True:
 			print("Conexao com a internet estabelecida")
 			while (num_de_documentos() > 0):
@@ -78,11 +67,7 @@ while True:
 			print("Sem conexao com a internet ou com o servidor! Salvando dados no banco local")
 			save_banco_local(doc)
 	except Exception as error:
+		print('o erro ta aqui')
 		print(error)
 	i +=1
-	time.sleep(2)
 
-	#value = binario_para_decimal(value_bin)
-    #value = i
-    #value =float("%.2f"%random.uniform(0.3,0.6))
-    
