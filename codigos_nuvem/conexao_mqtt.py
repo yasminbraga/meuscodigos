@@ -4,7 +4,7 @@ from conexao_banco import *
 
 client = mqtt.Client()
 
-def checar_servidor(local, port,timeout):
+def checar_servidor(local,port,timeout):
 	try:
 		client.connect(local,port,timeout)
 		return True

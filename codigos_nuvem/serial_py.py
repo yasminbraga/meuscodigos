@@ -12,10 +12,10 @@ local = '10.1.19.207'
 port_mqtt = 1883
 timeout = 60
 topico = 'Tapajos-IoT'
+servidor = 'http://10.1.19.207:3000'
 
 
-
-comunicacaoSerial = serial.Serial('/dev/ttyACM1', 9600)
+comunicacaoSerial = serial.Serial('/dev/ttyACM0', 9600)
 
 i = 1
 while True:
@@ -43,9 +43,9 @@ while True:
 		"model_sensor": model_sensor,
 		"name_sensor": name_sensor,
 		"value": value }
-		print('%d - '%i, name_sensor,' : %s A '%value)
+		print('%d - '%i, name_sensor,' : %s'%value)
 		#print(doc)
-		if checar_conexao() == True and checar_servidor(local,port_mqtt,timeout) == True:
+		if checar_conexao() == True and checar_servidor(local,port_mqtt,timeout) == True and servidor_online(servidor) == True:
 			print("Conexao com a internet estabelecida")
 			while (num_de_documentos() > 0):
 				#pega o dado que foi salvo no banco quando nao tinha conexao e envia
@@ -67,7 +67,7 @@ while True:
 			print("Sem conexao com a internet ou com o servidor! Salvando dados no banco local")
 			save_banco_local(doc)
 	except Exception as error:
-		print('o erro ta aqui')
+		
 		print(error)
 	i +=1
 
