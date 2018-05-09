@@ -2,6 +2,7 @@ int pinotensao = A0;
 float valortensao = 0;
 float media = 0;
 float tensao = 0;
+
 void setup() {
   pinMode(pinotensao,INPUT);
   Serial.begin(9600);
