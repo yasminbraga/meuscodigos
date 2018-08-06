@@ -8,11 +8,11 @@ import random
 import json
 
 #define o local de envio, a porta, o tempo e o topico
-local = '10.1.19.207'
+local = '10.1.201.1'
 port_mqtt = 1883
 timeout = 60
 topico = 'Tapajos-IoT'
-servidor = 'http://10.1.19.207:3000'
+servidor = 'http://10.1.201.1:5000'
 
 
 comunicacaoSerial = serial.Serial('/dev/ttyACM0', 9600)
@@ -42,7 +42,7 @@ while True:
 		"type_sensor": type_sensor,
 		"model_sensor": model_sensor,
 		"name_sensor": name_sensor,
-		"value": value }
+		"value": float(value)}
 		print('%d - '%i, name_sensor,' : %s'%value)
 		#print(doc)
 		if checar_conexao() == True and checar_servidor(local,port_mqtt,timeout) == True and servidor_online(servidor) == True:
